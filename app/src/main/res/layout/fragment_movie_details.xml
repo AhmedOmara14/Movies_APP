@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.task.domain.model.movie_details.MovieDetailsResponse" />
+
+        <variable
+            name="fragment"
+            type="com.task.presentation.movie_details.MovieDetailsFragment" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F5F5F5"
+            android:padding="10sp">
+
+            <ImageView
+                android:id="@+id/ivMovie"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:scaleType="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@{movie.title}"
+                android:textColor="#000"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toStartOf="@+id/tvDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivMovie">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvDes"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_light"
+                android:progressBackgroundTint="#4D000000"
+                android:text="@{movie.overview}"
+                android:textColor="@color/purple_500"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/ivMovie"
+                app:layout_constraintStart_toStartOf="@+id/ivMovie"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20sp"
+                android:layout_marginEnd="10sp"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="end"
+                android:text="@{movie.release_date}"
+                android:textColor="#000"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvName"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/genres"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/ivMovie"
+                app:layout_constraintStart_toStartOf="@+id/ivMovie"
+                app:layout_constraintTop_toBottomOf="@+id/tvDes" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAllGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/ivMovie"
+                app:layout_constraintTop_toBottomOf="@+id/txt" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
